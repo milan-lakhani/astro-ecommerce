@@ -1,5 +1,10 @@
 import ProductBadge from './productBadge';
 
+type image = {
+  src: string;
+  alt: string;
+}
+
 interface Props {
   thumb_src: string;
   thumb_alt: string;
@@ -9,6 +14,7 @@ interface Props {
   color: string;
   colors: string[];
   position: string;
+  images: image[];
 }
 
 export default function CardProduct({
@@ -19,7 +25,8 @@ export default function CardProduct({
   price,
   color,
   colors,
-  position
+  position,
+  images
 }: Props) {
 
   const classList = "card-body " + "text-" + position;
@@ -29,7 +36,7 @@ export default function CardProduct({
       <div className="card card-product border mb-5 shadow-xs border-radius-lg">
         <a href="#">
           <div className="height-350">
-            <img className="w-100 h-100 p-4 rounded-top" src={`${import.meta.env.BASE_URL}${thumb_src}`} alt={thumb_alt} />
+            <img className="w-100 h-100 p-4 rounded-top" src={`${thumb_src}`} alt={thumb_alt} />
           </div>
           <div className={classList}>
             {(color) && 
@@ -37,7 +44,9 @@ export default function CardProduct({
             }
             {(title) && 
               <h4 className="font-weight-bold">
+                <a href="/product">
                 {title}
+                </a>
               </h4>
             }
 
@@ -56,7 +65,7 @@ export default function CardProduct({
             }
 
             {!(description || colors || color) &&
-              <a href="#" className="font-weight-normal text-body text-sm">Shop Now</a>
+              <a href="/product" className="font-weight-normal text-body text-sm">Shop Now</a>
             }
           </div>
         </a>

@@ -167,6 +167,7 @@ export default function ProductOverview({
                       title = {product.title}
                       description = {product.description}
                       price = {product.price}
+                      images = {product.images}
                       position = "center"
                     />
                   </div>
